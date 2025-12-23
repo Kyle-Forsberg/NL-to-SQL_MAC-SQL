@@ -1,0 +1,49 @@
+BASEBALL DATASET EXAMPLES:
+
+EXAMPLE 1:
+Question: "Which is the most popular voting method for Hall of Fame in 2000?"
+SQL: SELECT votedby FROM hall_of_fame WHERE yearid = "2000" GROUP BY votedby ORDER BY count(*) DESC LIMIT 1;
+
+EXAMPLE 2:
+Question: "How many players weigh over 200 pounds?"
+SQL: SELECT count(*) FROM player WHERE weight > 200;
+
+EXAMPLE 3:
+Question: "Who is the winner of Rookie of the Year in 2010?"
+SQL: SELECT player_id FROM player_award WHERE year = 2010 AND award_id = "Rookie of the Year";
+
+EXAMPLE 4:
+Question: "What is the top league that pays the most to their players?"
+SQL: SELECT league_id FROM salary GROUP BY league_id ORDER BY sum(salary) DESC LIMIT 1;
+
+OTHER DATASET EXAMPLES:
+
+EXAMPLE 5:
+Question: "Which streets have the highest rates of crime?"
+SQL: SELECT Location FROM GreaterManchesterCrime WHERE Location like "%Street%" GROUP BY Location ORDER BY count(*) DESC LIMIT 1;
+
+EXAMPLE 6:
+Question: "What time do most crimes happen?"
+SQL: SELECT CrimeTS FROM GreaterManchesterCrime GROUP BY CrimeTS ORDER BY count(*) DESC LIMIT 1;
+
+COMPLEX DATASET EXAMPLES (for reference):
+
+EXAMPLE 5:
+Question: "What are the top five states in descending order in terms of revenue provided to school districts?"
+SQL: SELECT T2.state FROM FINREV_FED_KEY_17 as T2 JOIN FINREV_FED_17 as T1 ON T1.state_code = T2.state_code GROUP BY T1.state_code ORDER BY sum(t_fed_rev) DESC LIMIT 5;
+
+EXAMPLE 6:
+Question: "How much did the federal government spend in No Child Left Behind funding in 2017?"
+SQL: SELECT sum(c14) FROM FINREV_FED_17 WHERE yr_data = 17;
+
+KEY PATTERNS FROM EXAMPLES:
+- Sports data: Awards in `player_award` table, salaries in `salary` table
+- Player info: `player` table has name_first, name_last, weight, height
+- Year filtering: Use `year` column in award/salary tables, `yearid` in hall_of_fame
+- Award queries: `player_award` table with award_id and year columns
+- "Most frequent" questions: GROUP BY column ORDER BY COUNT(*) DESC LIMIT 1
+- "Highest/top" questions: ORDER BY column DESC LIMIT 1 (or LIMIT N for top N)
+- Statistical queries: Use SUM(), AVG(), COUNT(), MAX(), MIN()
+- Text filtering: Use LIKE '%text%' for partial matches
+- Joins: Use table aliases (T1, T2) for clarity when joining
+- Hall of Fame inducted: WHERE inducted = "Y"

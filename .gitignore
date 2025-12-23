@@ -1,0 +1,64 @@
+# Large Database Files (1.5GB+ total)
+# GitHub has 100MB file limit, these databases are too large
+
+# All database directories
+KaggleDBQA/databases/
+KaggleDBQA/standardized_databases/
+
+# All database file types
+*.db
+*.sqlite
+!sample_ecommerce.db
+!examples/example.db
+
+# Specific large files
+KaggleDBQA/databases/HistoryOfBaseball/baseball
+
+# Virtual Environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Results and Logs
+results/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Large data files
+*.csv
+*.json
+!KaggleDBQA/examples/*.json
+*.sqlite
+# Model files (if any)
+*.bin
+*.safetensors
+*.onnx
+
+# Environment variables
+.env
+.env.local
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
