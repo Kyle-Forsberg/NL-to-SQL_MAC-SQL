@@ -31,3 +31,14 @@ printMACResult(result)
 ## Hardware Requirements
 
 - **Minimum**: 8GB VRAM 
+
+
+## Attribution & References
+
+This project is inspired by the framework introduced in:
+
+> [Bing Wang et al., *MAC-SQL: A Multi-Agent Collaborative Framework for Text-to-SQL*,(2023)](https://arxiv.org/abs/2312.11242)
+
+The implementation in this repository is an original Python codebase
+written by the author for an academic project and does not reuse or
+derive from the original authors’ source code.
